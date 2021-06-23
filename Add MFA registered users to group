@@ -1,0 +1,17 @@
+
+
+
+
+$sb = {
+    $username = xxxxxxxx
+    $Password = ConvertTo-SecureString HpbB`fa`xCwL -AsPlainText -Force
+    $creds = new-object System.Management.Automation.PSCredential($username, $password)
+    Connect-MsolService -Credential $creds
+    Get-MsolUser
+    $group = get-msolgroup -objectid xxxxxxxxxxxx
+$users = get-msoluser -All| select userprincipalname,objectid,StrongAuthenticationMethods | where {$_.StrongAuthenticationMethods -ne $null}
+
+$users | foreach {add-msolgroupmember -groupobjectid $group.objectid -groupmembertype "user" -groupmemberobjectid $_.objectid}
+
+}
+
