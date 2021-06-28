@@ -1,0 +1,6 @@
+#https://www.spguides.com/convert-classic-sharepoint-site-to-modern-communication-site/#
+
+
+Connect-SPOService -Url https://DOMAIN-admin.sharepoint.com –UseWebLogin
+
+Enable-SPOCommSite -SiteUrl https://DOMAIN.sharepoint.com/sites/Classicsite1/ -DesignPackageId 96c933ac-3698-44c7-9f4a-5fd17d71af9e
